@@ -50,7 +50,10 @@ const app = Vue.createApp({
     },
   },
   methods: {
-     
+     playMusic(){
+      var audio = new Audio('audio_file.mp3');
+      audio.play();
+     },
     attackMonster() {
       // const attackValue=Math.floor(Math.random()*(12-5))+5;
       this.currentRound++;

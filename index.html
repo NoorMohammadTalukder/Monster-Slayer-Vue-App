@@ -13,6 +13,13 @@
     <script src="app.js" defer></script>
   </head>
   <body>
+  
+    <audio  loop autoplay>
+      <source src="audio_file.ogg" type="audio/ogg">
+      <source src="audio_file.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
     <header>
       <h1>Monster Slayer</h1>
     </header>
@@ -39,7 +46,7 @@
       </section>
 
       <section id="controls" v-if="winner ==null">
-        <button @click="attackMonster()">ATTACK</button>
+        <button @click="attackMonster()" @click="playMusic()">ATTACK</button>
         <button :disabled="mayUseSpecialAttack" @click="specialAttackMonster()">SPECIAL ATTACK</button>
         <button @click="healPlayer()">HEAL</button>
         <button @click="surrender()">SURRENDER</button>

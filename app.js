@@ -8,6 +8,7 @@ const app=Vue.createApp({
         return{
             playerHealth:100,
             monsterHealth:100,
+            currentRound:0,
         }
     },
     computed:{
@@ -16,11 +17,15 @@ const app=Vue.createApp({
         },
         playerBarStyles(){
             return {width: this.playerHealth + '%'}
+        },
+        mayUseSpecialAttack(){
+            return this.currentRound%3 !==0;
         }
     },
     methods:{
         attackMonster(){
             // const attackValue=Math.floor(Math.random()*(12-5))+5;
+            this.currentRound++;
             const attackValue=getRandom(12,5);
             this.monsterHealth=this.monsterHealth-attackValue;
 
@@ -30,6 +35,12 @@ const app=Vue.createApp({
             // const attackValue=Math.floor(Math.random()*(15-8))+8;
             const attackValue=getRandom(15,8);
             this.playerHealth=this.playerHealth-attackValue; 
+        },
+        specialAttackMonster(){
+            this.currentRound++;
+            const attackValue=getRandom(10,25);
+            this.monsterHealth-=attackValue;
+            this.attackPlayer();
         }
     }
 });
